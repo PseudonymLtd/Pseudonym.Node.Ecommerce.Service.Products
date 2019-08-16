@@ -2,14 +2,14 @@
   "name": "service.products",
   "version": "1.0.0",
   "description": "Service for managing all product related operations",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PseudonymLtd/nodejs-sandbox.git"
+    "url": "git+https://github.com/PseudonymLtd/Service.Ecommerce.Products.git"
   },
   "keywords": [
     "microservice",
@@ -18,9 +18,9 @@
   "author": "Tom Day",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PseudonymLtd/nodejs-sandbox/issues"
+    "url": "https://github.com/PseudonymLtd/Service.Ecommerce.Products/issues"
   },
-  "homepage": "https://github.com/PseudonymLtd/nodejs-sandbox#readme",
+  "homepage": "https://github.com/PseudonymLtd/Service.Ecommerce.Products#readme",
   "devDependencies": {
     "nodemon": "^1.19.1"
   },
