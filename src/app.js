@@ -28,7 +28,7 @@ app.use((error, request, response, next) =>
 
         response.status(500);
 
-        response.send(serviceResponse.InternalServerError(error, { requestedUri: request.url }));
+        return response.send(serviceResponse.InternalServerError(error, { requestedUri: request.url }));
     }
     else {
         next();
