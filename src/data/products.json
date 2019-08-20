@@ -1,1 +1,62 @@
-[{"name":"Prototype Secret Weapon X","description":"Secret weapon lol","price":1,"id":1},{"name":"Scalectrix","description":"This will break","price":10,"id":2},{"name":"Protractor","description":"A device to measure angles that is translucent and ways 10g.","price":3,"id":3}]
+[
+    {
+        "name": "Prototype Secret Weapon X",
+        "description": "Secret weapon lol",
+        "price": 1,
+        "id": 1
+    },
+    {
+        "name": "Scalectrix",
+        "description": "This will break",
+        "price": 10,
+        "id": 2
+    },
+    {
+        "name": "Protractor",
+        "description": "A device to measure angles that is translucent and weighs in at a wopping 100g.",
+        "price": 3,
+        "id": 3
+    },
+    {
+        "name": "Cheese Grater",
+        "description": "A device used to slice cheese into smaller desirable pieces",
+        "price": 2.25,
+        "id": 4
+    },
+    {
+        "name": "Pain Bakery",
+        "description": "A portable bakery kit that will guarantee stress, anguish and pain.",
+        "price": 10.99,
+        "id": 6
+    },
+    {
+        "name": "Pufferfish Grenade",
+        "description": "A puffer fish armed with a small explosive device, perfect for liberating aquariums",
+        "price": 125,
+        "id": 7
+    },
+    {
+        "name": "John Wick",
+        "description": "John Wick. Don't kill his dog.",
+        "price": 15000,
+        "id": 8
+    },
+    {
+        "name": "A Pallet of Mushrooms",
+        "description": "Not THOSE mushrooms, normal, open cap mushrooms, on a pallet with no packaging. Good luck getting them in a fridge",
+        "price": 375.5,
+        "id": 9
+    },
+    {
+        "name": "Stasis Chambre",
+        "description": "For all those stasis related needs.",
+        "price": 124.99,
+        "id": 10
+    },
+    {
+        "name": "BJSS Developer",
+        "description": "A hireable and fireable developer, at this new exciting day rate!",
+        "price": 500,
+        "id": 11
+    }
+]

@@ -20,6 +20,21 @@ app.use((request, response, next) =>
 
 app.use('/api', apiRoutes);
 
+app.use((error, request, response, next) =>
+{
+    if (error !== null && error !== undefined) {
+        logger.error(`500 Internal Server Error: ${request.url}`);
+        console.error(error);
+
+        response.status(500);
+
+        response.send(serviceResponse.InternalServerError(error, { requestedUri: request.url }));
+    }
+    else {
+        next();
+    }
+});
+
 app.use((request, response, next) =>
 {
     logger.warn(`404 Not found:\r\n${request.url}`);

@@ -9,7 +9,11 @@ module.exports = class DataStore {
         logger.info(`Reading data from disk`);
 
         fs.readFile(path.join(__dirname, 'products.json'), (err, data) => {
-            if (err) { return logger.fatal(err); }
+            if (err) 
+            { 
+                logger.fatal(err);
+                return callback([], err);
+            }
             return callback(JSON.parse(data.toString()));
         });
     }
@@ -18,7 +22,11 @@ module.exports = class DataStore {
         logger.info(`Writing new data to disk`);
 
         fs.writeFile(path.join(__dirname, 'products.json'), JSON.stringify(data), (err) => {
-            if (err) { return logger.fatal(err); }
+            if (err) 
+            { 
+                logger.fatal(err);
+                return callback([], err);
+            }
             return callback(data);
         });
     }
