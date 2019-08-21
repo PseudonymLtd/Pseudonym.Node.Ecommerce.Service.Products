@@ -60,7 +60,7 @@ module.exports = class DataStore {
                         }
 
                         if (items.length === dataFiles.length) {
-                            return callback(items.map(i => mapper(i)));
+                            return callback(items.map(i => mapper(i)).sort((a, b) => a.Id - b.Id));
                         }
                     });
                 });
