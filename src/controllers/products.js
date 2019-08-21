@@ -66,7 +66,7 @@ module.exports.putProduct = (request, response, next) => {
         logger.info(`Added new product:`);
         console.info(newProduct);
 
-        return response.send(serviceResponse.Ok(undefined, {
+        return response.send(serviceResponse.Ok(newProduct, {
             itemName: data.Name,
             identifier: data.Id
         }));
