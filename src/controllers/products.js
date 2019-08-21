@@ -91,7 +91,7 @@ module.exports.updateProduct = (request, response, next) => {
                 logger.info(`updated product:`);
                 console.info(data);
 
-                return response.send(serviceResponse.Ok());
+                return response.send(serviceResponse.Ok(data));
             }
         });
     });
