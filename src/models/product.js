@@ -4,11 +4,12 @@ const fileStore = 'products';
 
 module.exports = class Product extends DataModel
 {
-    constructor(name, description, price) {
+    constructor(name, description, price, imageUri) {
         super();
         this.name = name;
         this.description = description;
-        this.price = price;
+        this.price = parseFloat(price);
+        this.imageUri = imageUri ? imageUri : null;
     }
     get Name() {
         return this.name;
@@ -31,7 +32,15 @@ module.exports = class Product extends DataModel
     }
 
     set Price(value) {
-        return this.price = value;
+        return this.price = parseFloat(value);
+    }
+
+    get ImageUri() {
+        return this.imageUri;
+    }
+
+    set ImageUri(value) {
+        return this.imageUri = value;
     }
 
     Delete(callback) {
@@ -52,7 +61,7 @@ module.exports = class Product extends DataModel
 
     static Mapper(rawJson) {
         const p = JSON.parse(rawJson);
-        const product = new Product(p.name, p.description, p.price);
+        const product = new Product(p.name, p.description, p.price, p.imageUri);
         product.Id = p.id;
         return product;
     }

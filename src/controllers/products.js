@@ -58,7 +58,8 @@ module.exports.putProduct = (request, response, next) => {
     const newProduct = new Product(
         request.body.name,
         request.body.description,
-        request.body.price);
+        request.body.price,
+        request.body.imageUri);
 
     newProduct.Save((data, err) => {
         if (err !== undefined) { return next(err); }
@@ -82,6 +83,7 @@ module.exports.updateProduct = (request, response, next) => {
         product.Name = request.body.name;
         product.Description = request.body.description;
         product.Price = request.body.price;
+        product.ImageUri = request.body.imageUri;
 
         product.Save((data, err) => {
             if (err !== undefined) { 

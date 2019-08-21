@@ -9,6 +9,6 @@ module.exports = class DataModel
     }
 
     set Id(value) {
-        return this.id = value;
+        return this.id = parseInt(value);
     }
 }
