@@ -21,8 +21,8 @@ module.exports = class DataStore {
                             return callback(true, err);
                         }
                     }
-                    else if (callback) {
-                        callback(true);
+                    else {
+                        return callback(true);
                     }
                 });
             }

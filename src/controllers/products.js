@@ -63,16 +63,16 @@ module.exports.deleteProduct = (request, response, next) => {
             if (err !== undefined && existed) { 
                 return next(err); 
             }
-            else if (existed) {
-                return response.send(serviceResponse.Partial(undefined, {
+            else if (!existed) {
+                return response.send(serviceResponse.Partial(product, {
                     UnexpectedBehaviour: `Record with Id ${request.params.id} has already been deleted, or never existed.`
                 }));
             }
             else {
                 logger.info(`removed product:`);
-                console.info(record);
+                console.info(product);
 
-                return response.send(serviceResponse.Ok());
+                return response.send(serviceResponse.Ok(product));
             }
         });
     });
