@@ -1,15 +1,19 @@
 module.exports = class ServiceResponseHelper
 {
     static Ok(data, additionalInformation) {
-        return new ServiceResponse(200, 'success', data, additionalInformation);
+        return new ServiceResponse(200, 'Success', data, additionalInformation);
     }
 
     static Partial(data, additionalInformation) {
-        return new ServiceResponse(202, 'partial', data, additionalInformation);
+        return new ServiceResponse(202, 'Partial Success', data, additionalInformation);
     }
 
     static InternalServerError(data, additionalInformation) {
-        return new ServiceResponse(500, 'Ambigious Exception Occured', data, additionalInformation);
+        return new ServiceResponse(500, 'Internal Server Error', data, additionalInformation);
+    }
+
+    static BadRequest(data, additionalInformation) {
+        return new ServiceResponse(400, 'Bad Request', data, additionalInformation);
     }
 
     static NotFound(data, additionalInformation) {

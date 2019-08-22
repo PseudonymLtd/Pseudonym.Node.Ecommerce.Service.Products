@@ -3,10 +3,10 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const apiRoutes = require('./routes');
-const logging = require('./util/logging');
+const Logger= require('./util/logging');
 const serviceResponse = require('./models/serviceResponse');
 
-const logger = new logging.Logger('Service');
+const logger = new Logger('Service');
 
 app.use(bodyParser.urlencoded({extended: false}));
 

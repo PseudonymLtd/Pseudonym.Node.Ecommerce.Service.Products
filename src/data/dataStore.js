@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const logging = require('../util/logging');
+const Logger= require('../util/logging');
 
-const logger = new logging.Logger('DataStore');
+const logger = new Logger('DataStore');
 
 module.exports = class DataStore {
 

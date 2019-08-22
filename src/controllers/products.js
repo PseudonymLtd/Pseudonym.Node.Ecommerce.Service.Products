@@ -1,8 +1,8 @@
-const logging = require('../util/logging');
+const Logger= require('../util/logging');
 const serviceResponse = require('../models/serviceResponse');
 const Product = require('../models/product');
 
-const logger = new logging.Logger('ProductsController');
+const logger = new Logger('ProductsController');
 
 module.exports.getProducts = (request, response, next) => {
     Product.FetchAll((data, err) => {
@@ -10,6 +10,31 @@ module.exports.getProducts = (request, response, next) => {
 
         response.send(serviceResponse.Ok(data));
 
+        return logger.debug('Data Returned');
+    });
+};
+
+module.exports.postProducts = (request, response, next) => {
+    
+    const productIds = request.body;
+
+    if (productIds.length === 0) { 
+        return serviceResponse.BadRequest('Body did not contain an product Ids.');
+    }
+    
+    Product.FetchAll((data, err) => {
+        if (err !== undefined) { return next(err); }
+
+        const filteredProducts = data.filter(p => productIds.includes(p.Id));
+        const unfoundIds = productIds.filter(id => !filteredProducts.map(p => p.Id).includes(id));
+
+        if (unfoundIds.length > 0) {
+            response.send(serviceResponse.Partial(filteredProducts, unfoundIds.map(id => `No product was found for supplied Id '${id}'`)));
+        }
+        else {
+            response.send(serviceResponse.Ok(filteredProducts));
+        }
+        
         return logger.debug('Data Returned');
     });
 };
@@ -90,7 +115,7 @@ module.exports.updateProduct = (request, response, next) => {
                 return next(err); 
             }
             else {
-                logger.info(`updated product:`);
+                logger.info('updated product:');
                 console.info(data);
 
                 return response.send(serviceResponse.Ok(data));
