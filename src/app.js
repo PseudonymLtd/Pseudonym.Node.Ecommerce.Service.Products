@@ -1,8 +1,8 @@
 const Framework = require('library.ecommerce.framework');
-const apiRoutes = require('./routes');
+const ProductsController = require('./controllers/products');
 
 const serviceRunner = new Framework.Service.Runner('Products Service');
 
-serviceRunner.AddRouteSet('/api', apiRoutes);
+serviceRunner.RegisterController('/api', new ProductsController());
 
 serviceRunner.Start(3001);
