@@ -1,0 +1,30 @@
+{
+  "name": "library.ecommerce.framework",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Shared Service Framework Library",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "bash ./build/clean.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PseudonymLtd/Library.Ecommerce.Framework.git"
+  },
+  "keywords": [
+    "shared",
+    "service-framework"
+  ],
+  "author": "Tom Day",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PseudonymLtd/Library.Ecommerce.Framework/issues"
+  },
+  "homepage": "https://github.com/PseudonymLtd/Library.Ecommerce.Framework#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  }
+}
