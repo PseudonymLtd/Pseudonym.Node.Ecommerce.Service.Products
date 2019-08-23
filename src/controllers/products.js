@@ -1,8 +1,8 @@
-const Logger= require('../util/logging');
-const serviceResponse = require('../models/serviceResponse');
+const Framework = require('library.ecommerce.framework');
+const serviceResponse = Framework.Service.Responder;
 const Product = require('../models/product');
 
-const logger = new Logger('ProductsController');
+const logger = new Framework.Utils.Logger('Products Controller');
 
 module.exports.getProducts = (request, response, next) => {
     Product.FetchAll((data, err) => {
