@@ -1,7 +1,6 @@
 {
-  "name": "service.products",
-  "private": true,
-  "version": "1.0.0",
+  "name": "pseudonym.node.ecommerce.service.products",
+  "version": "1.0.0-alpha",
   "description": "Service for managing all product related operations",
   "main": "src/app.js",
   "scripts": {
@@ -11,18 +10,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PseudonymLtd/Service.Ecommerce.Products.git"
+    "url": "git+https://github.com/PseudonymLtd/Pseudonym.Node.Ecommerce.Service.Products.git"
   },
   "keywords": [
     "microservice",
-    "products"
+    "products",
+    "pseudonym",
+    "ecommerce"
   ],
   "author": "Tom Day",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PseudonymLtd/Service.Ecommerce.Products/issues"
+    "url": "https://github.com/PseudonymLtd/Pseudonym.Node.Ecommerce.Service.Products/issues"
   },
-  "homepage": "https://github.com/PseudonymLtd/Service.Ecommerce.Products#readme",
+  "homepage": "https://github.com/PseudonymLtd/Pseudonym.Node.Ecommerce.Service.Products#readme",
   "devDependencies": {
     "nodemon": "^1.19.1"
   },
