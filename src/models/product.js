@@ -1,4 +1,4 @@
-const Framework = require('library.ecommerce.framework');
+const Framework = require('pseudonym.node.ecommerce.library.framework');
 const dataStore = new Framework.Data.FileDataStore('products');
 
 module.exports = class Product extends Framework.Models.DataModel

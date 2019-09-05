@@ -1,4 +1,4 @@
-const Framework = require('library.ecommerce.framework');
+const Framework = require('pseudonym.node.ecommerce.library.framework');
 const Product = require('../models/product');
 
 module.exports = class ProductsController extends Framework.Service.Controller {

@@ -1,4 +1,4 @@
-const Framework = require('library.ecommerce.framework');
+const Framework = require('pseudonym.node.ecommerce.library.framework');
 const ProductsController = require('./controllers/products');
 
 const serviceRunner = new Framework.Service.Runner('Products Service');
