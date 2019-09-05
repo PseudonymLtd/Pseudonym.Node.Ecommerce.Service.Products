@@ -1,6 +1,6 @@
 {
   "name": "pseudonym.node.ecommerce.service.products",
-  "version": "1.0.0-alpha",
+  "version": "1.0.1-alpha",
   "description": "Service for managing all product related operations",
   "main": "src/app.js",
   "scripts": {
