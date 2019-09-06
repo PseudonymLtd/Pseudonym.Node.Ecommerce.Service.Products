@@ -43,7 +43,7 @@ module.exports = class ProductsController extends Framework.Service.Controller {
             });
         });
 
-        this.Put('/product', (request, response, next) => {
+        this.Post('/product', (request, response, next) => {
 
             const newProduct = new Product(
                 request.body.name,
