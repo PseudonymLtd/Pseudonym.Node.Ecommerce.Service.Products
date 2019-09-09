@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "bash ./build/start.sh",
-        "publish": "bash ./build/publish.sh"
+        "pub": "bash ./build/publish.sh"
     },
     "repository": {
         "type": "git",
