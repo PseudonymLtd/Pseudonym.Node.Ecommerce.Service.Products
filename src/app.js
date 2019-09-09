@@ -1,7 +1,14 @@
+const path = require('path');
+
 const Framework = require('pseudonym.node.ecommerce.library.framework');
 const ProductsController = require('./controllers/products');
 
 const serviceRunner = new Framework.Service.Runner('Products Service');
+
+serviceRunner.RegisterInfoHealthCheck(new Framework.Service.FileSystemAccessHealthCheck([
+    __dirname,
+    path.join(__dirname, 'data', 'products')
+]));
 
 serviceRunner.RegisterController('/api', new ProductsController());
 
