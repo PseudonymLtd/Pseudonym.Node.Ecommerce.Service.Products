@@ -54,7 +54,7 @@ module.exports = class ProductsController extends Framework.Service.Controller {
             newProduct.Save((data, err) => {
                 if (err !== undefined) { return next(err); }
         
-                this.Logger.info(`Added new product:`);
+                this.Logger.Info(`Added new product:`);
                 console.info(newProduct);
         
                 return response.Ok(newProduct, {
@@ -80,7 +80,7 @@ module.exports = class ProductsController extends Framework.Service.Controller {
                         return next(err); 
                     }
                     else {
-                        this.Logger.info('updated product:');
+                        this.Logger.Info('updated product:');
                         console.info(data);
         
                         return response.Ok(data);
@@ -105,7 +105,7 @@ module.exports = class ProductsController extends Framework.Service.Controller {
                         });
                     }
                     else {
-                        this.Logger.info(`removed product:`);
+                        this.Logger.Info(`removed product:`);
                         console.info(product);
         
                         return response.Ok(product);
