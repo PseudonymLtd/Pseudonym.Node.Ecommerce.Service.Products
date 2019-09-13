@@ -1,4 +1,5 @@
 const Framework = require('pseudonym.node.ecommerce.library.framework');
+const collectionName = 'Products';
 
 module.exports = class Product extends Framework.Models.DataModel
 {
@@ -43,10 +44,14 @@ module.exports = class Product extends Framework.Models.DataModel
     }
 
     static Map(dataObj) {
-        return new Product(dataObj._name, dataObj._description, dataObj._price, dataObj._imageUri, dataObj._id);
+        return new Product(dataObj._name, dataObj._description, dataObj._price, dataObj._imageUri, dataObj._id.toString());
     }
 
     static get CollectionName() {
-        return 'Products';
+        return collectionName;
+    }
+
+    get CollectionName() {
+        return collectionName;
     }
 }

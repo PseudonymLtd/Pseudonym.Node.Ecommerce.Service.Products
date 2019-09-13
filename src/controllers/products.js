@@ -36,19 +36,19 @@ module.exports = class ProductsController extends Framework.Service.Controller {
             const productIds = request.body;
         
             if (productIds.length === 0) { 
-                return response.BadRequest('Body did not contain an product Ids.');
+                return response.BadRequest('Body did not contain any product Ids.');
             }
             
-            Product.FetchByIds(productIds, (data, err) => {
+            Product.FetchByIds(productIds, (products, err) => {
                 if (err !== undefined) { return next(err); }
-
-                const unfoundIds = productIds.filter(id => !data.map(p => p.Id).includes(id));
+                
+                const unfoundIds = productIds.filter(id => !products.map(p => p.Id).includes(id));
         
                 if (unfoundIds.length > 0) {
-                    response.Partial(data, unfoundIds.map(id => `No product was found for supplied Id '${id}'`));
+                    response.Partial(products, unfoundIds.map(id => `No product was found for supplied Id '${id}'`));
                 }
                 else {
-                    response.Ok(data);
+                    response.Ok(products);
                 }
             });
         });
