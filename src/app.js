@@ -5,11 +5,6 @@ const ProductsController = require('./controllers/products');
 
 const serviceRunner = new Framework.Service.Runner('Products Service');
 
-serviceRunner.RegisterInfoHealthCheck(new Framework.Service.FileSystemAccessHealthCheck([
-    __dirname,
-    path.join(__dirname, '..', 'appsettings.json')
-]));
-
 serviceRunner.RegisterController('/api', new ProductsController());
 
 serviceRunner.RegisterPostProcessor((request, response, complete) => {
