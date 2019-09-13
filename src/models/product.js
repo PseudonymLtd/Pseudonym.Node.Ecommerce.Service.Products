@@ -1,67 +1,52 @@
 const Framework = require('pseudonym.node.ecommerce.library.framework');
-const dataStore = new Framework.Data.FileDataStore('products');
 
 module.exports = class Product extends Framework.Models.DataModel
 {
-    constructor(name, description, price, imageUri) {
-        super();
-        this.name = name;
-        this.description = description;
-        this.price = parseFloat(price);
-        this.imageUri = imageUri ? imageUri : null;
+    constructor(name, description, price, imageUri, id) {
+        super(id);
+        this._name = name;
+        this._description = description;
+        this._price = parseFloat(price);
+        this._imageUri = imageUri ? imageUri : null;
     }
+
     get Name() {
-        return this.name;
+        return this._name;
     }
 
     set Name(value) {
-        return this.name = value;
+        return this._name = value;
     }
 
     get Description() {
-        return this.description;
+        return this._description;
     }
 
     set Description(value) {
-        return this.description = value;
+        return this._description = value;
     }
 
     get Price() {
-        return this.price;
+        return this._price;
     }
 
     set Price(value) {
-        return this.price = parseFloat(value);
+        return this._price = parseFloat(value);
     }
 
     get ImageUri() {
-        return this.imageUri;
+        return this._imageUri;
     }
 
     set ImageUri(value) {
-        return this.imageUri = value;
+        return this._imageUri = value;
     }
 
-    Delete(callback) {
-        return dataStore.Delete(this.Id, callback);
+    static Map(dataObj) {
+        return new Product(dataObj._name, dataObj._description, dataObj._price, dataObj._imageUri, dataObj._id);
     }
 
-    Save(callback) {
-        return dataStore.Save(this.Id, this, callback);
-    }
-
-    static FetchAll(callback) {
-        return dataStore.FetchAll(Product.Mapper, callback);
-    }
-
-    static Fetch(id, callback) {
-        return dataStore.Fetch(id, Product.Mapper, callback);
-    }
-
-    static Mapper(rawJson) {
-        const p = JSON.parse(rawJson);
-        const product = new Product(p.name, p.description, p.price, p.imageUri);
-        product.Id = p.id;
-        return product;
+    static get CollectionName() {
+        return 'Products';
     }
 }

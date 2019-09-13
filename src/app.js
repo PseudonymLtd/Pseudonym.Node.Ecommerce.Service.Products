@@ -7,7 +7,7 @@ const serviceRunner = new Framework.Service.Runner('Products Service');
 
 serviceRunner.RegisterInfoHealthCheck(new Framework.Service.FileSystemAccessHealthCheck([
     __dirname,
-    path.join(__dirname, 'data', 'products')
+    path.join(__dirname, '..', 'appsettings.json')
 ]));
 
 serviceRunner.RegisterController('/api', new ProductsController());

@@ -7,17 +7,28 @@ module.exports = class ProductsController extends Framework.Service.Controller {
 
         this.Get('/products', (request, response, next) => {
             Product.FetchAll((data, err) => {
-                if (err !== undefined) { return next(err); }
-                response.Ok(data);
+                if (err !== undefined) { 
+                    return next(err); 
+                }
+                else {
+                    return response.Ok(data);
+                }
             });
         });
 
         this.Get('/product/:id', (request, response, next) => {
-            var id = parseInt(request.params.id);
-        
-            Product.Fetch(id, (data, err) => {
-                if (err !== undefined) { return next(err); }
-                response.Ok(data);
+            Product.FetchById(request.params.id, (data, err) => {
+                if (err !== undefined) { 
+                    return next(err); 
+                }
+                else if (data === null) {
+                    return response.BadRequest(`A Product with an id of '${request.params.id}' does not exist in the database.`, {
+                        suppliedId: request.params.id
+                    });
+                }
+                else {
+                    return response.Ok(data);
+                }
             });
         });
 
@@ -28,17 +39,16 @@ module.exports = class ProductsController extends Framework.Service.Controller {
                 return response.BadRequest('Body did not contain an product Ids.');
             }
             
-            Product.FetchAll((data, err) => {
+            Product.FetchByIds(productIds, (data, err) => {
                 if (err !== undefined) { return next(err); }
-        
-                const filteredProducts = data.filter(p => productIds.includes(p.Id));
-                const unfoundIds = productIds.filter(id => !filteredProducts.map(p => p.Id).includes(id));
+
+                const unfoundIds = productIds.filter(id => !data.map(p => p.Id).includes(id));
         
                 if (unfoundIds.length > 0) {
-                    response.Partial(filteredProducts, unfoundIds.map(id => `No product was found for supplied Id '${id}'`));
+                    response.Partial(data, unfoundIds.map(id => `No product was found for supplied Id '${id}'`));
                 }
                 else {
-                    response.Ok(filteredProducts);
+                    response.Ok(data);
                 }
             });
         });
@@ -65,9 +75,7 @@ module.exports = class ProductsController extends Framework.Service.Controller {
         });
 
         this.Put('/product/:id', (request, response, next) => {
-            var id = parseInt(request.params.id);
-        
-            Product.Fetch(id, (product, err) => {
+            Product.FetchById(request.params.id, (product, err) => {
                 if (err !== undefined) { return next(err); }
                 
                 product.Name = request.body.name;
@@ -90,9 +98,7 @@ module.exports = class ProductsController extends Framework.Service.Controller {
         });
 
         this.Delete('/product/:id', (request, response, next) => {
-            var id = parseInt(request.params.id);
-        
-            Product.Fetch(id, (product, err) => {
+            Product.FetchById(request.params.id, (product, err) => {
                 if (err !== undefined) { return next(err); }
                 
                 product.Delete((existed, err) => {
